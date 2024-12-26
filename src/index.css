@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@keyframes runningText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-text {
+    animation: runningText 10s linear infinite;
+  }
+  
+
+  /* src/index.css */
+html {
+  scroll-behavior: smooth;
+}
