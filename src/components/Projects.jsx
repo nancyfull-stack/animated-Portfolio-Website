@@ -1,77 +1,58 @@
-// src/pages/Projects.js
-import React from 'react';
+import React from "react";
+import project from "./data/projects.json";
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Project One',
-      description: 'A web application built with React and Node.js.',
-      technologies: ['React', 'Node.js', 'Express'],
-      link: 'https://github.com/yourusername/project-one',
-      image: 'https://via.placeholder.com/400x300?text=Project+One',
-    },
-    {
-      title: 'Project Two',
-      description: 'A full-stack project with React, Redux, and MongoDB.',
-      technologies: ['React', 'Redux', 'MongoDB'],
-      link: 'https://github.com/yourusername/project-two',
-      image: 'https://via.placeholder.com/400x300?text=Project+Two',
-    },
-    {
-      title: 'Project Three',
-      description: 'A mobile app built with React Native and Expo.',
-      technologies: ['React Native', 'Expo'],
-      link: 'https://github.com/yourusername/project-three',
-      image: 'https://via.placeholder.com/400x300?text=Project+Three',
-    },
-    // Add more projects as needed
-  ];
-
   return (
-    <div className="p-8 bg-gray-900 text-white">
-      <h2 className="text-3xl mb-8">Projects</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-          >
-            {/* Project Image */}
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              {/* Project Title */}
-              <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>
-              {/* Project Description */}
-              <p className="text-gray-300 mb-4">{project.description}</p>
-              {/* Project Technologies */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-yellow-500 text-black py-1 px-3 rounded-full text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              {/* Project Link */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-yellow-500 font-semibold hover:underline"
+    <>
+      <div className="container projects my-3" id="projects">
+        <h1>PROJECTS</h1>
+        <div className="row d-flex justify-content-center align-content-center">
+          {project.map((data) => (
+            <>
+              <div
+                key={data.id}
+                className="my-4 col-sm-6 col-md-4 col-lg-3 mx-4"
               >
-                View Project
-              </a>
-            </div>
-          </div>
-        ))}
+                <div
+                  className="card bg-dark text-light"
+                  style={{
+                    width: "18rem",
+                    border: "1px solid yellow",
+                    boxShadow: "5px 5px 10px 10px rgba(101, 175, 10, 0.5)",
+                  }}
+                  data-aos="flip-right"
+                  data-aos-duration="1000"
+                >
+                  <div className="img d-flex justify-content-center align-content-center p-3">
+                    <img
+                      src={data.imageSrc}
+                      className="card-img-top"
+                      alt="..."
+                      style={{
+                        width: "250px",
+                        height: "200px",
+                        border: "2px solid yellow",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{data.title}</h5>
+                    <p className="card-text">{data.description}</p>
+                    <a href={data.demo} className="btn btn-primary mx-3">
+                      Demo
+                    </a>
+                    <a href={data.source} className="btn btn-warning">
+                      Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
